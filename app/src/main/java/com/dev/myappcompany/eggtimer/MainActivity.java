@@ -13,10 +13,11 @@ import android.widget.TextView;
 public class MainActivity extends AppCompatActivity {
 
     TextView timerTextView;
+    SeekBar timerSeekBar;
 
     public void buttonClicked(View view) {
 
-        CountDownTimer countDownTimer = new CountDownTimer(1000, 1000) {
+        CountDownTimer countDownTimer = new CountDownTimer(timerSeekBar.getProgress() * 1000, 1000) {
             @Override
             public void onTick(long millisUntilFinished) {
                 updateTimer((int) millisUntilFinished / 1000);
@@ -37,9 +38,9 @@ public class MainActivity extends AppCompatActivity {
 
         String secondString = Integer.toString(seconds);
 
-        if (secondString.equals("0")) {
+        if (seconds <= 9) {
 
-            secondString = "00";
+            secondString = "0" + secondString;
 
         }
         timerTextView.setText(Integer.toString(minutes) + ":" + secondString);
@@ -51,7 +52,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        SeekBar timerSeekBar = findViewById(R.id.timerSeekBar);
+        timerSeekBar = findViewById(R.id.timerSeekBar);
         timerTextView = findViewById(R.id.countdownTextView);
 
         int maximumTime = 600;
