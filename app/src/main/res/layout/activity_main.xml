@@ -54,6 +54,7 @@
         android:layout_marginTop="76dp"
         android:layout_marginEnd="1dp"
         android:layout_marginRight="1dp"
+        android:onClick="buttonClicked"
         android:text="GO!"
         app:layout_constraintEnd_toStartOf="@+id/eggImageView"
         app:layout_constraintStart_toStartOf="@+id/countdownTextView"
